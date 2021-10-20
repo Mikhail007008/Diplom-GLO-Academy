@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{const e=document.querySelector(".top-menu").querySelectorAll("li>a");document.addEventListener("click",(t=>{let o=t.target;e.forEach((e=>{if(t.preventDefault(),e===o){let t=e.getAttribute("href");r=document.querySelector(t),window.scroll({left:0,top:r.offsetTop,behavior:"smooth"})}var r}))}))})()})();
