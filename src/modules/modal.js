@@ -3,19 +3,31 @@ const comeModal = () =>{
 		callbackBtn = document.querySelectorAll('.callback-btn'),
 		modalOverlay = document.querySelector('.modal-overlay');
 
+	const modalOn = () =>{
+		modalOverlay.style.display = 'block';
+		modalCallback.style.display = 'block';
+	};
+
+	const modalOff = () =>{
+		modalOverlay.style.display = 'none';
+		modalCallback.style.display = 'none';
+	};
+
 	document.addEventListener('click', (event) =>{
 		let target = event.target;
 
 		callbackBtn.forEach((el) =>{
 			if(target === el){
-				modalOverlay.style.display = 'block';
-				modalCallback.style.display = 'block';
+				modalOn();
 			}
 		});
 
+		if(target.closest('.button-services')){
+			modalOn();
+		}
+
 		if(target.closest('.modal-close') || target.closest('.modal-overlay')){
-			modalOverlay.style.display = 'none';
-			modalCallback.style.display = 'none';
+			modalOff();
 		}
 	});
 };
