@@ -1,7 +1,8 @@
 const comeModal = () =>{
 	const modalCallback = document.querySelector('.modal-callback'),
 		callbackBtn = document.querySelectorAll('.callback-btn'),
-		modalOverlay = document.querySelector('.modal-overlay');
+		modalOverlay = document.querySelector('.modal-overlay'),
+		ourServicesBtn = document.querySelectorAll('.absolute');
 
 	const modalOn = () =>{
 		modalOverlay.style.display = 'block';
@@ -17,6 +18,12 @@ const comeModal = () =>{
 		let target = event.target;
 
 		callbackBtn.forEach((el) =>{
+			if(target === el){
+				modalOn();
+			}
+		});
+
+		ourServicesBtn.forEach((el) =>{
 			if(target === el){
 				modalOn();
 			}
