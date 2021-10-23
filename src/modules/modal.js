@@ -48,5 +48,4 @@ const comeModal = () =>{
 		}
 	});
 };
-
 export default comeModal;

@@ -31,9 +31,9 @@ const scrolling = () =>{
 		}
 
 		menuItems.forEach((item) =>{
-			event.preventDefault();
 
 			if(item === target){
+				event.preventDefault();
 				let nameToScroll = item.getAttribute('href');
 				scrolTo(document.querySelector(nameToScroll));
 			}
