@@ -2,7 +2,8 @@ const comeModal = () =>{
 	const modalCallback = document.querySelector('.modal-callback'),
 		callbackBtn = document.querySelectorAll('.callback-btn'),
 		modalOverlay = document.querySelector('.modal-overlay'),
-		ourServicesBtn = document.querySelectorAll('.absolute');
+		ourServicesBtn = document.querySelectorAll('.absolute'),
+		allImg = document.querySelectorAll('.img-wrapper');
 
 	const modalOn = () =>{
 		modalOverlay.style.display = 'block';
@@ -15,7 +16,8 @@ const comeModal = () =>{
 	};
 
 	document.addEventListener('click', (event) =>{
-		let target = event.target;
+		let target = event.target,
+			foo = target.closest('.element');
 
 		callbackBtn.forEach((el) =>{
 			if(target === el){
@@ -28,6 +30,14 @@ const comeModal = () =>{
 				modalOn();
 			}
 		});
+
+		if(foo){
+			allImg.forEach((el) =>{
+				if(el === target){
+					modalOn();
+				}
+			});
+		}
 
 		if(target.closest('.button-services')){
 			modalOn();
