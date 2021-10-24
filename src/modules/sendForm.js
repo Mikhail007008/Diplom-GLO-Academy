@@ -48,7 +48,7 @@ const sendForm = () =>{
 		};
 
 		const patternPhone = /([0-9\+\(\)\- ]){18}/,
-			patternFio = /([а-яА-Я ]){2}/;
+			patternFio = /([а-яА-Я]){2}/;
 
 			if(elem.getAttribute('name') === 'tel'){
 				if(!elem.value || !patternPhone.test(elem.value)){
