@@ -3,6 +3,7 @@ const scrolling = () =>{
 		menuItems = menu.querySelectorAll('li>a'),
 		mobMenu = document.querySelector('.mobile-menu'),
 		mobMenuItems = mobMenu.querySelectorAll('li>a'),
+		mobMenuBtn = document.querySelector('.mob-menu-btn'),
 		btnUp = document.querySelector('.up');
 
 	btnUp.style.visibility = 'hidden';
@@ -45,7 +46,7 @@ const scrolling = () =>{
 			}
 		});
 
-		if(target === event.target.closest('.mob-menu-btn') || 
+		if(target === event.target.closest('.mobBtn') || 
 		target === event.target.closest('.mobile-menu-close') ||
 		target === event.target.closest('.callback-mobile')){
 			activeMenu();

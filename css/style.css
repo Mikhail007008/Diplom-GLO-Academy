@@ -405,10 +405,10 @@ a.absolute {
 }
 .mob-menu-btn span {
 	display: block;
-	height: 3px;
-	margin-bottom: 4px;
-	width: 30px;
-	background: #22282e;
+	width: 40px;
+}
+.mobBtn {
+	margin-top: -12px;
 }
 .mobile-menu {
 	position: fixed;
