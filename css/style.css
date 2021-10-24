@@ -11,6 +11,11 @@ body {
 	overflow-x: hidden;
 	font-family: "Open Sans", sans-serif;
 }
+body .active-menu {
+	-webkit-transition: 1s;
+	transition: 1s;
+	right: 0
+}
 .main-wrapper {
 	min-height: 100%;
 	height: auto !important;
@@ -736,7 +741,7 @@ hr.white {
 		padding: 55px 40px 40px;
 	}
 	.mobile-tab-header {
-		/* display: none; */
+		display: none;
 	}
 	ul.tabs.mobile {
 		display: block !important;
@@ -802,7 +807,7 @@ hr.white {
 	}
 	.mobile-menu,
 	.overlay {
-		/* display: none; */
+		display: none;
 	}
 	.logo {
 		margin-left: 0;

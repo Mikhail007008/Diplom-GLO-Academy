@@ -4,6 +4,16 @@ const accordeonElements = () =>{
 		accordEl = accordeon.querySelectorAll('.element'),
 		elementContent = accordeon.querySelectorAll('.element-content');
 
+	const defaultAccord = () =>{
+		accordEl.forEach((el)=>{
+			el.classList.remove('active');
+		});
+		elementContent.forEach((el)=>{
+			el.style.display = 'none';
+		});
+	};
+	defaultAccord();
+
 	const elementToogle = (index) =>{
 		for(let i =0; i < elementContent.length; i++){
 
@@ -25,6 +35,7 @@ const accordeonElements = () =>{
 			accordEl.forEach((item, i) =>{
 				if(item === target){
 					elementToogle(i);
+					setTimeout(()=> defaultAccord(), 10000);
 				}
 			});
 		}
