@@ -1,10 +1,11 @@
 'use strict';
 
-import comeModal from './modules/modal';
-import scrolling from './modules/scrollTo';
+import modal from './modules/modal';
+import scrolling from './modules/scrolling';
 import slider from './modules/slider';
-import newCarousel from './modules/carousel';
+import newCarousel from './modules/newCarousel';
 import sendForm from './modules/sendForm';
+import accordeonElements from './modules/accordeonElements';
 
 //ScrollTo
 scrolling();
@@ -15,4 +16,6 @@ newCarousel();
 //SendForm
 sendForm();
 //Modal callback
-comeModal();
+modal();
+//Accordeon
+accordeonElements();

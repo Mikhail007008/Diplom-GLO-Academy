@@ -1,6 +1,6 @@
 const slider = () =>{
 	const slide = document.querySelectorAll('.item'),
-	sliderTable = document.querySelectorAll('.table');
+		sliderTable = document.querySelectorAll('.table');
 
 	let currentSlide = 0,
 		interval;
@@ -11,13 +11,9 @@ const slider = () =>{
 		visibility: visible;`;
 	});
 
-	const prev = (elem, index) =>{
-		elem[index].style.display = 'none';
-	};
+	const prev = (elem, index) =>{elem[index].style.display = 'none';};
 
-	const next = (elem, index) =>{
-		elem[index].style.display = 'block';
-	};
+	const next = (elem, index) =>{elem[index].style.display = 'block';};
 
 	const autoPlay = () =>{
 		prev(slide, currentSlide);

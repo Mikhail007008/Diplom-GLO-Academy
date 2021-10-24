@@ -1,7 +1,7 @@
 const sendForm = () =>{
 
 	const modal = document.querySelector('.modal-callback'),
-		inputs = document.querySelectorAll('input'),
+		inputs = modal.querySelectorAll('input'),
 		style = document.createElement('style'),
 		statusMessage = document.createElement('div'),
 		
@@ -9,29 +9,30 @@ const sendForm = () =>{
 		loadMessage = 'Идёт отправка',
 		succesMessage = 'Отправлено!';
 
-	statusMessage.style.cssText = `font-size: 2rem; color: #000; text-align: center`; 
+	statusMessage.style.cssText = `font-size: 2rem; color: #000; text-align: center; font-family: Helios;
+		font-weight: bold;
+	}`; 
 	style.textContent = `
-	input.success {
-		border: 2px solid green
-	}
-	input.error {
-		border: 2px solid red
-	}
-	.validator-error {
-		font-size: 12px;
-		font-family: sans-serif;
-		color: red
+		input.success {
+			border: 2px solid green
+		}
+		input.error {
+			border: 2px solid red
+		}
+		.validator-error {
+			font-size: 12px;
+			font-family: sans-serif;
+			color: red;
+			margin-top: -15px;
 	}`;
 	document.head.appendChild(style);
 
 	const validator = (elem) =>{
-
 		const showError = (elem) =>{
 			elem.classList.remove('success');
 			elem.classList.add('error');
 
-			if(elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')){
-				return;}
+			if(elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')){return;}
 
 			const errorDiv = document.createElement('div');
 			errorDiv.textContent = 'Ошибка в этом поле';
@@ -39,42 +40,34 @@ const sendForm = () =>{
 			elem.insertAdjacentElement('afterEnd', errorDiv);
 		};
 
-	const showSuccess = (elem) =>{
-		elem.classList.remove('error');
-		elem.classList.add('success');
-			if(elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')){
-				elem.nextElementSibling.remove('validator-error');}
+		const showSuccess = (elem) =>{
+			elem.classList.remove('error');
+			elem.classList.add('success');
+				if(elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')){
+					elem.nextElementSibling.remove('validator-error');}
+		};
+
+		const patternPhone = /([0-9\+\(\)\- ]){18}/,
+			patternFio = /[а-яА-Я ]/;
+
+			if(elem.getAttribute('name') === 'tel'){
+				if(!elem.value || !patternPhone.test(elem.value)){
+					showError(elem);
+				}else{showSuccess(elem);}
+			}else if(elem.getAttribute('name') === 'fio'){
+				if(!elem.value || !patternFio.test(elem.value)){
+					showError(elem);
+				}else{showSuccess(elem);}
+			}
 	};
 
-	const patternPhone = /([0-9\+\(\)\- ]){18}/,
-		patternName = /[а-яА-Я ]/;
-
-		if(elem.getAttribute('name') === 'tel'){
-			if(!elem.value || !patternPhone.test(elem.value)){
-				showError(elem);
-			}else{
-				showSuccess(elem);
-			}
-		}else if(elem.getAttribute('name') === 'fio'){
-			if(!elem.value || !patternName.test(elem.value)){
-				showError(elem);
-			}else{
-				showSuccess(elem);
-			}
-		}
-	};
-
-	inputs.forEach(elem=>{
-			elem.addEventListener('input', ()=>{
-				validator(elem);
-			});
-		});
+	inputs.forEach(elem => elem.addEventListener('input', ()=> validator(elem)));
 
 	window.addEventListener("DOMContentLoaded", () =>{
 		const setCursorPosition = (pos, elem) =>{
 			elem.focus();
-			if (elem.setSelectionRange) {elem.setSelectionRange(pos, pos);}
-			else if (elem.createTextRange) {
+			if (elem.setSelectionRange){elem.setSelectionRange(pos, pos);}
+			else if (elem.createTextRange){
 				const range = elem.createTextRange();
 				range.collapse(true);
 				range.moveEnd("character", pos);
@@ -83,16 +76,16 @@ const sendForm = () =>{
 			}
 		};
 		
-		function mask (event) {
+		function mask (event){
 			let matrix = "+7 (___) ___-__-__",
 				i = 0,
 				def = matrix.replace(/\D/g, ""),
 				val = this.value.replace(/\D/g, "");
-			if (def.length >= val.length) {val = def;}
-			this.value = matrix.replace(/./g, function(a) {
+			if (def.length >= val.length){val = def;}
+			this.value = matrix.replace(/./g, function(a){
 				return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a;
 			});
-			if (event.type === "blur") {
+			if (event.type === "blur"){
 				if (this.value.length === 2) {this.value = "";}
 			} else {setCursorPosition(this.value.length, this);}
 		}
@@ -114,9 +107,7 @@ const sendForm = () =>{
 			const formData = new FormData(target);
 			let body = {};
 
-			formData.forEach((val, key) =>{
-				body[key] = val;
-			});
+			formData.forEach((val, key) => body[key] = val);
 			
 			postData(body)
 				.then((response) =>{
@@ -134,15 +125,12 @@ const sendForm = () =>{
 							}
 						});
 					}else{throw new Error('status network not 200');}
-					
 				})
 				.catch((error) =>{
 					statusMessage.textContent = errorMessage;
 					console.error(error);
 				});
-		} else{
-			event.preventDefault();
-		}
+		} else{event.preventDefault();}
 	});
 
 	const postData = (body) =>{

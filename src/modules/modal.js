@@ -1,9 +1,10 @@
-const comeModal = () =>{
+const modal = () =>{
 	const modalCallback = document.querySelector('.modal-callback'),
 		callbackBtn = document.querySelectorAll('.callback-btn'),
 		modalOverlay = document.querySelector('.modal-overlay'),
-		ourServicesBtn = document.querySelectorAll('.absolute'),
-		allImg = document.querySelectorAll('.img-wrapper');
+		servicesElements = document.querySelector('.services-elements'),
+		ourServicesBtn = servicesElements.querySelectorAll('.absolute'),
+		allImg = servicesElements.querySelectorAll('.img-wrapper');
 
 	const modalOn = () =>{
 		modalOverlay.style.display = 'block';
@@ -48,4 +49,4 @@ const comeModal = () =>{
 		}
 	});
 };
-export default comeModal;
+export default modal;

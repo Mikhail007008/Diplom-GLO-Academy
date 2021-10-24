@@ -2,6 +2,7 @@ const scrolling = () =>{
 	const menu = document.querySelector('.top-menu'),
 		menuItems = menu.querySelectorAll('li>a'),
 		btnUp = document.querySelector('.up');
+
 	btnUp.style.visibility = 'hidden';
 
 	document.addEventListener('scroll', ()=>{
@@ -31,7 +32,6 @@ const scrolling = () =>{
 		}
 
 		menuItems.forEach((item) =>{
-
 			if(item === target){
 				event.preventDefault();
 				let nameToScroll = item.getAttribute('href');

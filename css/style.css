@@ -736,7 +736,7 @@ hr.white {
 		padding: 55px 40px 40px;
 	}
 	.mobile-tab-header {
-		display: none;
+		/* display: none; */
 	}
 	ul.tabs.mobile {
 		display: block !important;
@@ -802,7 +802,7 @@ hr.white {
 	}
 	.mobile-menu,
 	.overlay {
-		display: none;
+		/* display: none; */
 	}
 	.logo {
 		margin-left: 0;
