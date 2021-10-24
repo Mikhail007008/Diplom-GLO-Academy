@@ -48,20 +48,23 @@ const sendForm = () =>{
 		};
 
 		const patternPhone = /([0-9\+\(\)\- ]){18}/,
-			patternFio = /[а-яА-Я ]/;
+			patternFio = /([а-яА-Я ]){2}/;
 
 			if(elem.getAttribute('name') === 'tel'){
 				if(!elem.value || !patternPhone.test(elem.value)){
 					showError(elem);
 				}else{showSuccess(elem);}
 			}else if(elem.getAttribute('name') === 'fio'){
+				elem.value = elem.value.replace(/[^А-Яа-я ]/g, '');
 				if(!elem.value || !patternFio.test(elem.value)){
 					showError(elem);
 				}else{showSuccess(elem);}
 			}
 	};
 
-	inputs.forEach(elem => elem.addEventListener('input', ()=> validator(elem)));
+	inputs.forEach(elem => elem.addEventListener('input', ()=>{
+		validator(elem);
+	}));
 
 	window.addEventListener("DOMContentLoaded", () =>{
 		const setCursorPosition = (pos, elem) =>{
