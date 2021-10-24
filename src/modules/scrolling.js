@@ -3,7 +3,6 @@ const scrolling = () =>{
 		menuItems = menu.querySelectorAll('li>a'),
 		mobMenu = document.querySelector('.mobile-menu'),
 		mobMenuItems = mobMenu.querySelectorAll('li>a'),
-		mobMenuBtn = document.querySelector('.mob-menu-btn'),
 		btnUp = document.querySelector('.up');
 
 	btnUp.style.visibility = 'hidden';
